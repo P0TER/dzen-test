@@ -1,0 +1,131 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+}
+
+"GeoLocation API provided by GraphLoc.com"
+type Query {
+  "Receives an 'ip' as argument and returns an object with location data"
+  getLocation(ip: String!): locdata
+}
+
+"Object including city data"
+type city {
+  geoname_id: String
+  names: cityNames
+}
+
+"City names in different languages"
+type cityNames {
+  de: String
+  en: String
+  es: String
+  fr: String
+  ja: String
+  ru: String
+}
+
+"Object including continent data"
+type continent {
+  code: String
+  geoname_id: String
+  names: continentNames
+}
+
+"Continent names in different languages"
+type continentNames {
+  de: String
+  en: String
+  es: String
+  fr: String
+  ja: String
+  ru: String
+}
+
+"Object including country data"
+type country {
+  geoname_id: String
+  iso_code: String
+  names: countryNames
+}
+
+"Country names in different languages"
+type countryNames {
+  de: String
+  en: String
+  es: String
+  fr: String
+  ja: String
+  ru: String
+}
+
+"Object including location data"
+type location {
+  accuracy_radius: String
+  latitude: String
+  longitude: String
+  metro_code: String
+  names: locationNames
+  time_zone: String
+}
+
+"Location names in different languages"
+type locationNames {
+  de: String
+  en: String
+  es: String
+  fr: String
+  ja: String
+  ru: String
+}
+
+"Object including all location data available for a given IP address"
+type locdata {
+  city: city
+  continent: continent
+  country: country
+  location: location
+  postal: postal
+  registered_country: registered_country
+  subdivisions: subdivisions
+}
+
+"Postal code number"
+type postal {
+  code: String
+}
+
+"Country where the ip address has been registered"
+type registered_country {
+  geoname_id: String
+  iso_code: String
+  names: registered_countryNames
+}
+
+"Registered country names in different languages"
+type registered_countryNames {
+  de: String
+  en: String
+  es: String
+  fr: String
+  ja: String
+  ru: String
+}
+
+"Object including subdivision data"
+type subdivisions {
+  geoname_id: String
+  iso_code: String
+  names: subdivisionsNames
+}
+
+"Subdivision names in different languages"
+type subdivisionsNames {
+  de: String
+  en: String
+  es: String
+  fr: String
+  ja: String
+  ru: String
+}

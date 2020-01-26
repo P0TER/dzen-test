@@ -9,7 +9,7 @@ Vue.use(VueApollo);
 const AUTH_TOKEN = 'apollo-token';
 
 // Http endpoint
-const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://graphloc.com/';
+const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://api.graphloc.com/graphql';
 
 // Config
 const defaultOptions = {
@@ -17,7 +17,7 @@ const defaultOptions = {
   httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
-  wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost:4000/graphql',
+  wsEndpoint: null,
   // LocalStorage token
   tokenName: AUTH_TOKEN,
   // Enable Automatic Query persisting with Apollo Engine
@@ -56,18 +56,21 @@ export function createProvider (options = {}) {
   apolloClient.wsClient = wsClient;
 
   // Create vue apollo provider
-  return new VueApollo({
+  let apolloProvider;
+  apolloProvider = new VueApollo({
     defaultClient: apolloClient,
     defaultOptions: {
       $query: {
         // fetchPolicy: 'cache-and-network',
       },
     },
-    errorHandler (error) {
+    errorHandler(error) {
       // eslint-disable-next-line no-console
       console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message);
     },
   });
+
+  return apolloProvider
 }
 
 // Manually call this when user log in
@@ -87,11 +90,11 @@ export async function onLogin (apolloClient, token) {
 // Manually call this when user log out
 export async function onLogout (apolloClient) {
   if (typeof localStorage !== 'undefined') {
-    localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(AUTH_TOKEN)
   }
   if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
   try {
-    await apolloClient.resetStore()
+    await apolloClient.resetStore();
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log('%cError on cache reset (logout)', 'color: orange;', e.message);

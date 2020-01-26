@@ -1,0 +1,31 @@
+query getLocation($ip: String!){
+  getLocation(ip: $ip) {
+    continent {
+      code
+      names {
+        en
+        ru
+      }
+    }
+    country {
+      iso_code
+      names {
+        en
+        ru
+      }
+    },
+    city {
+      names {
+        en
+        ru
+      }
+    }
+    postal {
+      code
+    }
+    location {
+      latitude
+      longitude
+    }
+  }
+}
