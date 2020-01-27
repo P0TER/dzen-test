@@ -8,14 +8,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.4.4",
-    "vue": "^2.6.10",
-    "vue-apollo": "^3.0.0-beta.11",
-    "vuex": "^3.1.2",
-    "vuex-persistedstate": "^2.7.0",
+    "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "latest",
     "apollo-link-http": "latest",
-    "apollo-cache-inmemory": "latest"
+    "core-js": "^3.4.4",
+    "v-mask": "^2.0.2",
+    "vue": "^2.6.10",
+    "vue-apollo": "^3.0.0-beta.11",
+    "vue-i18n": "^8.15.3",
+    "vuelidate": "^0.7.5",
+    "vuex": "^3.1.2",
+    "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

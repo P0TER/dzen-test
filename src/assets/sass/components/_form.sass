@@ -1,0 +1,27 @@
+.form
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  &__label
+    font-size: 18px
+    line-height: 25px
+    margin-bottom: 8px
+  &__input
+    max-width: rem(396)
+    width: 100%
+    height: rem(45)
+    border: 1px solid #CCCCCC
+    box-sizing: border-box
+    border-radius: $borderRadius
+    padding: 11px 18px 12px
+    font-size: 16px
+    line-height: 22px
+    +placeholder
+      color: #CCCCCC
+    &:focus
+      border: 1px solid #656BF2
+      outline: none
+    &--active
+      border: 1px solid #7C7C7C
+    &--error
+      border: 1px solid #FF6C6C

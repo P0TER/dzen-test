@@ -11,17 +11,21 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   plugins: [createPersistedState({
-    paths: ['history']
+    paths: ['history', 'lang']
   })],
   state: {
     location: {},
     isLoading: false,
     error: null,
-    history: []
+    history: [],
+    lang: 'en'
   },
   mutations: {
     TOGGLE_LOADING(state, payload) {
       state.isLoading = payload;
+    },
+    UPDATE_LANG(state, lang) {
+      state.lang = lang;
     },
     UPDATE_LOCATION(state, payload) {
       state.location = Object.assign({}, payload.location);
@@ -48,7 +52,7 @@ export default new Vuex.Store({
           },
         })
         .then(res => {
-          if (!res.data.getLocation) throw new Error('Invalid IPv4 address');
+          // if (!res.data.getLocation) throw new Error('Invalid IPv4 address');
           commit('UPDATE_LOCATION', {location: res.data.getLocation, ip});
           commit('UPDATE_HISTORY', {location: res.data.getLocation, ip});
           commit('UPDATE_ERROR', null);
@@ -56,5 +60,42 @@ export default new Vuex.Store({
         .catch(err => commit('UPDATE_ERROR', err))
         .finally(() => commit('TOGGLE_LOADING', false));
     },
+  },
+  getters: {
+    getCountryName(state) {
+      if (state.location.country) {
+        return state.location.country.names[state.lang] ? state.location.country.names[state.lang] : state.location.country.names.en;
+      } else {
+        return '—';
+      }
+    },
+    getContinentName(state) {
+      if (state.location.continent) {
+        return state.location.continent.names[state.lang] ? state.location.continent.names[state.lang] : state.location.continent.names.en;
+      } else {
+        return '—';
+      }
+    },
+    getCityName(state) {
+      if (state.location.city) {
+        return state.location.city.names[state.lang] ? state.location.city.names[state.lang] : state.location.city.names.en;
+      } else {
+        return '—';
+      }
+    },
+    getHistoryCountryName: state => id => {
+      if (state.history[id].location.country) {
+        return state.history[id].location.country.names[state.lang] ? state.history[id].location.country.names[state.lang] : state.history[id].location.country.en;
+      } else {
+        return '—';
+      }
+    },
+    getHistoryCityName: state => id => {
+      if (state.history[id].location.city) {
+        return state.history[id].location.city.names[state.lang] ? state.history[id].location.city.names[state.lang] : state.history[id].location.city.en;
+      } else {
+        return '—';
+      }
+    }
   }
 });

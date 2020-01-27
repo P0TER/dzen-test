@@ -1,0 +1,36 @@
+.table
+  border-collapse: separate
+  border-spacing: 0
+  border: 1px solid #CCCCCC
+  border-radius: $borderRadius
+  overflow: hidden
+  margin-top: 13px
+  td
+    padding: 12px
+  &__body
+    border: 1px solid #CCCCCC
+    td
+      border-right: 1px solid #CCCCCC
+      color: #333
+      padding: 10px
+      font-size: 12px
+      line-height: 16px
+      &:last-child
+        border-radius: 0 0 $borderRadius 0
+        border-right: none
+    &--empty
+      td
+        color: #969696
+  &__head
+    th
+      font-size: 12px
+      line-height: 16px
+      padding: 10px
+      background-color: #656BF2
+      border: none
+      color: #FFFFFF
+      font-weight: 400
+      &:first-child
+        border-radius: $borderRadius 0 0 0
+      &:last-child
+        border-radius: 0 $borderRadius 0 0

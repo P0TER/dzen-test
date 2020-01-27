@@ -1,0 +1,17 @@
+{
+  "message": {
+    "ip_address": "IP Address",
+    "get_information": "Get information",
+    "result": "Result",
+    "history": "History",
+    "clear_history": "Clear history",
+    "table": {
+      "ip_address": "IP address",
+      "country": "Country/code",
+      "continent": "Continent/code",
+      "city": "City",
+      "postcode": "Postcode",
+      "coordinates": "Coordinates"
+    }
+  }
+}
