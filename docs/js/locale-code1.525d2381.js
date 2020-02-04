@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["locale-code1"],{"2b79":function(o){o.exports=JSON.parse('{"message":{"ip_address":"IP адрес","get_information":"Получить информацию","result":"Результат запроса","history":"История","clear_history":"Очистить историю","table":{"ip_address":"IP адрес","country":"Страна/код страны","continent":"Континент/код континета","city":"Город","postcode":"Почтовый индекс","coordinates":"Координаты"}}}')}}]);
+//# sourceMappingURL=locale-code1.525d2381.js.map
